@@ -10,15 +10,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   $shell_commands = <<-END
     sudo apt-get update -y
-    sudo apt-get install git -y
-    sudo apt-get install vim -y
-    sudo apt-get install curl -y
-    sudo apt-get install zsh -y
+    sudo apt-get -y install git vim curl zsh
     chsh -s /bin/zsh vagrant
 
     git clone https://github.com/TakaGoto/dotfiles.git
-
     git clone git://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh
+
+    ln -s dotfiles/vim_files .vim
+    ln -s dotfiles/vim_files/.vimrc .vimrc
+    ln -s dotfiles/tmux_files/.tmux.conf .tmux.conf
+    ln -s dotfiles/zsh_files/.zshrc .zshrc
+
+    cd dotfiles && git submodule update --init
   END
 
   config.vm.provision "shell", inline: $shell_commands
