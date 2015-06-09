@@ -7,6 +7,7 @@ Vagrant.require_version ">= 1.5.0"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
+  config.vm.network "forwarded_port", guest: 8000, host: 8000
 
   $shell_commands = <<-END
     sudo apt-get update -y
