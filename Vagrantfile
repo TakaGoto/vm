@@ -31,7 +31,7 @@ class EssentialPackages
     $shell_commands = <<-END
       sudo apt-get update -y
       sudo curl --silent --location https://deb.nodesource.com/setup_0.12 | sudo bash -
-      sudo apt-get -y install git-core curl build-essential openssl libssl-dev git vim curl zsh nodejs
+      sudo apt-get -y install git-core build-essential openssl libssl-dev git vim curl zsh nodejs
     END
     config.vm.provision "shell", inline: $shell_commands
   end
