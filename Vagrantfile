@@ -15,6 +15,8 @@ PORTS = [
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty64"
 
+  config.ssh.forward_agent = true
+
   PORTS.each do |port|
     config.vm.network "forwarded_port", guest: port, host: port
   end
