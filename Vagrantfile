@@ -12,8 +12,15 @@ PORTS = [
   7357
 ]
 
+if Vagrant::Util::Platform.windows?
+  puts "using 32 bit ubuntu for windows"
+  BOX_IMAGE = "ubuntu/trusty32"
+else
+  BOX_IMAGE = "ubuntu/trusty64"
+end
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = BOX_IMAGE
 
   config.ssh.forward_agent = true
 
