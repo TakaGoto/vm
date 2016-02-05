@@ -20,6 +20,9 @@ else
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  #Prevent annoying "stduin: not a tty" error
+  config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
+
   config.vm.box = BOX_IMAGE
 
   config.ssh.forward_agent = true
